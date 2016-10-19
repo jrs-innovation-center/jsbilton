@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Magic Eight Ball</title>
+    <link rel="stylesheet" href="//unpkg.com/tachyons@latest">
+    <link rel="stylesheet" href="//unpkg.com/animate.css@latest">
+  </head>
+
+  <body class="bg-green">
+  <button class="bg-light-gray ba1 pa-2 helvetica ma6-ns w-50 h-50 ba dib mb4 br-100 h3 w3 pa4 tc shadow-2 f1 link" id="predictTheFuture">
+    8
+   </button>
+
+  <div class="bg-white w-50 h-25 ma6-ns small baskerville f3 ba pa-2 ma6-ns tc br3" id="theFuture"></div>
+
+    <script>
+
+          var answers = [
+            "It is certain",
+            "It is decidedly so",
+            "Reply hazy try again",
+            "Cannot predict now",
+            "Don't count on it",
+            "Outlook not so good",
+          ]
+
+          function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+           }
+
+          function predictTheFuture() {
+              var index = getRandomIntInclusive(0, 5)
+              return answers [index]
+          }
+
+            document
+              .getElementById("predictTheFuture")
+              .addEventListener("click", function(e) {
+                e.target.classList.add("animated")
+                e.target.classList.add("tada")
+
+                setTimeout(function () {
+                  var el =  document.getElementById("theFuture")
+                  el.classList.add("animated")
+                  el.classList.add("bounceIn")
+                  el.innerHTML = predictTheFuture()
+
+                  } , 1000)
+
+               })
+
+  </script>
+  </body>
+</html>
+
+
+
